@@ -1,6 +1,6 @@
 function AddTask() {
     return (
-        <input type="tex" placeholder="Add task"/>
+        <h1>Add Task</h1>
     )
 }
 
