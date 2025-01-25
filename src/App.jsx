@@ -37,12 +37,22 @@ function App() {
     setTask(newTasks)
   }
 
+  function addNewTask(title, description) {
+    const newTask = {
+      id: (tasks.at(-1).id) + 1,
+      title,
+      description,
+      state: 'todo'
+    };
+    setTask([...tasks, newTask])
+  }
+
 
   return (
     <div className='w-screen h-screen bg-slate-500 flex justify-center p-6'>
     <div className='w-[500px] space-y-5'>
       <h1 className='text-3xl text-slate-100 font-bold text-center'>To-Do List</h1>
-      <AddTask/>  
+      <AddTask onAddTask={addNewTask}/>  
       <Tasks tasks={tasks} onTaskClick={checkTask} onDeleteTask={deleteTask}/>
     </div>
   </div>
