@@ -15,8 +15,9 @@ function Tasks(props) {
                     >
                         {task.title}
                     </button>
-                    <button className="bg-slate-400 p-2 text-white rounded-md">
-                        <ChevronRightIcon/>
+                    <button
+                        className="bg-slate-400 p-2 text-white rounded-md">
+                            <ChevronRightIcon/>
                     </button>
                     <button
                         onClick={() => props.onDeleteTask(task.id)}
