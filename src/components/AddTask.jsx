@@ -22,15 +22,19 @@ function AddTask(props) {
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
                 placeholder="Enter the title"
-                className="py-2 px-4 border-2 border-slate-300 outline-slate-400 rounded-md" 
+                className={`py-2 px-4 border-2 border-slate-300 outline-slate-400 rounded-md ${
+                    err ? "border-2 border-red-400 placeholder-red-300" : ''
+                }`} 
             />
             <input type="text" required
                 value={description}
                 onChange={(event) => setDescription(event.target.value)}
                 placeholder="Enter the description" 
-                className="py-2 px-4 border-2 border-slate-300 outline-slate-400 rounded-md"
+                className={`py-2 px-4 border-2 border-slate-300 outline-slate-400 rounded-md ${
+                    err ? "border-2 border-red-400 placeholder-red-300" : ''
+                }`} 
             />
-            {err && (<div className="text-center font-bold text-red-600">{err}</div>)}
+            {err && (<div className="text-center text-red-600">{err}</div>)}
             <button
                 onClick={handleSubmit}
                 className="px-4 py-2 bg-slate-500 rounded-md text-white font-medium">Submit</button>
