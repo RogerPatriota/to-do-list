@@ -1,23 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 
 function App() {
 
-  const [tasks, setTask] = useState([
-    {
-      id: 1,
-      title: 'Study React',
-      description: 'Watch the youtube class',
-      state: 'todo'
-    },
-    {
-      id: 2, 
-      title: 'Work Out',
-      description: 'Go to the Gym',
-      state: 'todo'
-    }
-  ]);
+  const [tasks, setTask] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+    console.log(tasks)
+  }, [tasks])
 
   function checkTask(taskId) {
     const newTasks = tasks.map(task => {
@@ -38,8 +32,9 @@ function App() {
   }
 
   function addNewTask(title, description) {
+    const id = (tasks.at(-1)?.id ?? 0) + 1;
     const newTask = {
-      id: (tasks.at(-1).id) + 1,
+      id: id,
       title,
       description,
       state: 'todo'
